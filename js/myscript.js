@@ -6,30 +6,35 @@ scriptBtn1.addEventListener('click',
     //Chiedo di inserire una parola
     var parolaUtente = prompt('Inserisci una parola')
     console.log(parolaUtente);
-    //Validazione Parola inserita dall'utente
-    while( (parolaUtente == '') || (parolaUtente == null) || !isNaN(parolaUtente) ) {
-      parolaUtente = prompt('Errore: Non hai inserito una parola! Inserisci una parola');
-    }
 
-    var parolaArray = parolaUtente.split('')
-    console.log(parolaArray)
-
-    var parolaArrayReverse = parolaArray.reverse()
-    console.log(parolaArrayReverse)
-
-    var controllo = false;
-    var i = 0;
-    while( (i < parolaArray.length) ) {
-      if (parolaArray[i] === parolaArray.reverse() ) {
-        controllo = true;
-      }
-      //interruzione loop
-      i++
-    }
-    if(controllo == true) {
-      alert('Parola polindroma')
-    } else{
-      alert('Non è una parola polindroma')
-    }
+    // La mia funzione
+    verificaPolindroma(parolaUtente);
   }
 );
+
+//Function 1
+//Funzione di verifica se una parola è Polindrome.
+//Argomento deve essere una stringa !important
+function verificaPolindroma(parola) {
+
+  //Validazione parola
+  while( (parola == '') || (parola == null) || !isNaN(parola) || (parola.length < 2) ) {
+    parola = prompt('Errore: Non hai inserito una parola! Inserisci una parola');
+  }
+  //Variabile sulla qualle effettuare il controllo
+  var controllo = false;
+  var parolaInvertita = "";
+  for(var i = parola.length - 1; i >= 0; i--) {
+    parolaInvertita += parola[i];
+    if (parola == parolaInvertita) {
+      controllo = true;
+    }
+  }
+
+  //Messaggio di output
+  if(controllo == true) {
+    alert('Parola polindroma')
+  } else {
+    alert('Non è una parola polindroma')
+  }
+};

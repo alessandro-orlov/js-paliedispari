@@ -12,17 +12,18 @@ scriptBtn1.addEventListener('click',
   }
 );
 
-//Esercizio 2 Pari e Dispari
+//Esercizio 2 - Pari e Dispari
 var scriptBtn1 = document.getElementById('esercizio-2');
 
 scriptBtn1.addEventListener('click',
   function() {
-
     //Utente sceglie pari o dispari
     var pariOdispari = parseInt(prompt("Secgli 1 per pari o 0 per dispari"));
+    //Validazione della scelta
     while ( (pariOdispari != 1) && (pariOdispari != 0) ) {
       pariOdispari = parseInt(prompt("Errore: Digita 0 o 1"));
     }
+
     //Scelta dell'utente
     var sceltaUtente = 'dispari';
     var dispari = sceltaUtente;
@@ -33,42 +34,33 @@ scriptBtn1.addEventListener('click',
 
     //Chiedo un numero da 1 a 5 all'utente
     var numeroUtente = parseInt(prompt('Digita un numero da 1 a 5'));
+    //Validazione numeroUtente
+    while ( !(numeroUtente <= 5) ) {
+      numeroUtente = parseInt(prompt('Sai contare fino a 5? digita un numero da 1 a 5!'));
+    }
     console.log('Numero digitato dall\'utente ' + numeroUtente);
 
     //Numero random al computer
-    var numeroComputer = Math.floor(Math.random() * 6);
+    var numeroComputer = randomNumber();
     console.log('numero random dell\'computer ' + numeroComputer);
 
-    //Somma i due numeri
-    var somma = numeroUtente + numeroComputer;
-    console.log('la somma dei due numeri è: ' + somma)
-
-    //Stabiliamo se è pari
-    var pari = false;
-    if(somma % 2 == 0) {
-      pari = true;
-    }
-    console.log('La somma è un numero pari? ' + pari)
+    var numeroPariDispari = pariDispari(numeroUtente, numeroComputer);
+    console.log(numeroPariDispari);
 
     //Vediamo chi ha vinto
-    if (sceltaUtente == 'pari' && pari == true) {
+    if (sceltaUtente == 'pari' && numeroPariDispari == true) {
       alert('ha vinto l\'umano perche ha scelto pari');
-    } else if (sceltaUtente == 'dispari' && pari == false) {
+    } else if (sceltaUtente == 'dispari' && numeroPariDispari == false) {
       alert('l\'umano ha vinto perche ha scelto dispari')
     }
     else {
       alert('ha vinto la macchina AHAHAHAAHAHAH');
     }
-
-    
-   }
-
-);//Fine click
-
-
-
+  }
+);
 
 // ======================= FUNCTIONS ==============================
+
 //Function 1
 //Funzione di verifica se una parola è Polindrome.
 //Argomento deve essere una stringa !important
@@ -95,3 +87,24 @@ function verificaPolindroma(parola) {
     alert('Non è una parola polindroma')
   }
 };
+
+//Function 2
+// generiamo un numero random da 1 a 5
+function randomNumber() {
+  var numeroComputer = Math.floor(Math.random() * 6);
+  return numeroComputer
+}
+
+//Function 3
+//Somiamo due numeri e vediamo se è un numero pari o dispari
+function pariDispari(num1, num2) {
+  //Somma i due numeri
+  var somma = num1 + num2;
+
+  //Stabiliamo se è pari
+  var pari = false;
+  if(somma % 2 == 0) {
+    pari = true;
+  }
+  return pari;
+}

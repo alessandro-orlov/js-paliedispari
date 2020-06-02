@@ -18,10 +18,10 @@ var scriptBtn1 = document.getElementById('esercizio-2');
 scriptBtn1.addEventListener('click',
   function() {
     //Utente sceglie pari o dispari
-    var pariOdispari = parseInt(prompt("Secgli 1 per pari o 0 per dispari"));
+    var pariOdispari = parseInt(prompt("Digita 1 per Pari o 0 per Dispari"));
     //Validazione della scelta
     while ( (pariOdispari != 1) && (pariOdispari != 0) ) {
-      pariOdispari = parseInt(prompt("Errore: Digita 0 o 1"));
+      pariOdispari = parseInt(prompt("Errore: digita 1 per Pari o 0 per Dispari"));
     }
 
     //Scelta dell'utente
@@ -35,7 +35,7 @@ scriptBtn1.addEventListener('click',
     //Chiedo un numero da 1 a 5 all'utente
     var numeroUtente = parseInt(prompt('Digita un numero da 1 a 5'));
     //Validazione numeroUtente
-    while ( !(numeroUtente <= 5) ) {
+    while ( !(numeroUtente <= 5) || (numeroUtente == 0) ) {
       numeroUtente = parseInt(prompt('Sai contare fino a 5? digita un numero da 1 a 5!'));
     }
     console.log('Numero digitato dall\'utente ' + numeroUtente);
